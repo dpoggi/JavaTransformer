@@ -1,10 +1,12 @@
 package org.minimallycorrect.javatransformer.internal.util;
 
+import java.io.File;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public interface Splitter {
 	Splitter commaSplitter = on(',');
+	Splitter pathSplitter = on(File.pathSeparatorChar);
 
 	static Splitter on(char c) {
 		return s -> CollectionUtil.stream(new Supplier<String>() {

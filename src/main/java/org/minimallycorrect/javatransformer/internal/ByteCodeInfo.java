@@ -223,8 +223,8 @@ public class ByteCodeInfo implements ClassInfo {
 	public class MethodNodeInfo implements MethodInfo {
 		public final MethodNode node;
 		private final CachingSupplier<Frame<CombinedValue>[]> stackFrames;
-		private CachingSupplier<MethodDescriptor> descriptor;
-		private CachingSupplier<CodeFragment.Body> codeFragment;
+		private final CachingSupplier<MethodDescriptor> descriptor;
+		private final CachingSupplier<CodeFragment.Body> codeFragment;
 
 		MethodNodeInfo(MethodNode node) {
 			this.node = node;

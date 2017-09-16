@@ -62,6 +62,7 @@ public class JavaTransformerTest {
 		Assert.assertNull("Should skip package-info.java", new JavaTransformer().transformBytes(null, "org/example/test/package-info.java", null));
 	}
 
+	@SuppressWarnings("ResultOfMethodCallIgnored")
 	@Test
 	public void testTransform() throws Exception {
 		Path output = folder.newFolder("output").toPath();
@@ -92,10 +93,6 @@ public class JavaTransformerTest {
 				it.getReturnType();
 
 				val cf = it.getCodeFragment();
-
-				// TODO: remove once added for SourceCodeInfo
-				if (cf == null)
-					return;
 
 				Assert.assertNotNull(it + " should have a CodeFragment", cf);
 				if (it.getName().equals("testMethodCallExpression")) {

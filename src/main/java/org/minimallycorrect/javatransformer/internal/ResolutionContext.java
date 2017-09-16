@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.val;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
 
 import com.github.javaparser.ast.CompilationUnit;
@@ -162,11 +163,9 @@ public class ResolutionContext {
 	 * @param name Name to resolve
 	 * @return Type containing resolved name with descriptor/signature
 	 */
-	@Nullable
-	public Type resolve(String name) {
-		if (name == null)
-			return null;
-
+	@Contract(value = "!null -> !null; null -> fail", pure = true)
+	@NonNull
+	public Type resolve(@NonNull String name) {
 		int arrayCount = 0;
 		while (name.length() > 1 && name.lastIndexOf("[]") == name.length() - 2) {
 			arrayCount++;
@@ -283,11 +282,6 @@ public class ResolutionContext {
 
 	@Nullable
 	private Type resolveIfExists(String s) {
-		if (s.startsWith("java.") || s.startsWith("javax.")) {
-			try {
-				return Type.of(Class.forName(s).getName());
-			} catch (ClassNotFoundException ignored) {}
-		}
 		if (classPath.classExists(s))
 			return Type.of(s);
 		return null;

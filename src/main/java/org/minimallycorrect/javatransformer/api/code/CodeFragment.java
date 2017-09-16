@@ -39,6 +39,11 @@ public interface CodeFragment {
 	void insert(@NonNull CodeFragment codeFragment, @NonNull InsertionPosition position, @NonNull InsertionOptions insertionOptions);
 
 	default void insert(@NonNull CodeFragment codeFragment, @NonNull InsertionPosition position) {
+		if (this.equals(codeFragment)) {
+			if (position == InsertionPosition.OVERWRITE)
+				return;
+			throw new UnsupportedOperationException("Can't insert a CodeFragment into itself");
+		}
 		insert(codeFragment, position, new InsertionOptions());
 	}
 
