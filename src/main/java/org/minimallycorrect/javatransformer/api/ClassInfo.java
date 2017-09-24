@@ -99,4 +99,9 @@ public interface ClassInfo extends ClassMember {
 	default void accessFlags(Function<AccessFlags, AccessFlags> c) {
 		setAccessFlags(c.apply(getAccessFlags()));
 	}
+
+	@Override
+	default ClassInfo getClassInfo() {
+		return this;
+	}
 }

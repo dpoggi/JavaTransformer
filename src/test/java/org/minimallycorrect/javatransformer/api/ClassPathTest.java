@@ -10,7 +10,7 @@ import org.junit.Test;
 public class ClassPathTest {
 	@Test
 	public void checkAddReturnsCorrectValue() {
-		val classPath = new ClassPath();
+		val classPath = ClassPath.of();
 		Assert.assertTrue("path should be added successfully", classPath.addPath(Paths.get("test")));
 		Assert.assertFalse("path should not be added successfully", classPath.addPath(Paths.get("test")));
 		Assert.assertFalse("path should not be added successfully", classPath.addPath(Paths.get("./test")));

@@ -296,11 +296,6 @@ public class SourceInfo implements ClassInfo {
 		return l.stream().map((it) -> AnnotationParser.annotationFromAnnotationExpr(it, getContext())).collect(Collectors.toList());
 	}
 
-	@Override
-	public ClassInfo getClassInfo() {
-		return SourceInfo.this;
-	}
-
 	public class FieldDeclarationWrapper implements FieldInfo {
 		private final FieldDeclaration declaration;
 		private ResolutionContext context;

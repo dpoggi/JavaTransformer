@@ -4,6 +4,11 @@ import java.io.File;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * like Guava's Splitter but much smaller and with far less options
+ *
+ * Don't want to depend on guava as it's massive
+ */
 public interface Splitter {
 	Splitter commaSplitter = on(',');
 	Splitter pathSplitter = on(File.pathSeparatorChar);

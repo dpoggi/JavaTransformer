@@ -148,11 +148,6 @@ public class ByteCodeInfo implements ClassInfo {
 		return stream.collect(Collectors.toList());
 	}
 
-	@Override
-	public ClassInfo getClassInfo() {
-		return this;
-	}
-
 	MethodNodeInfo wrap(MethodNode node) {
 		return new MethodNodeInfo(node);
 	}
